@@ -101,7 +101,7 @@
             font-weight: 700;
         }
         
-        /* 🌿 리디자인: 넝쿨 잎사귀 더블 하트 드로잉 애니메이션 */
+        /* 🌿 리디자인: 끊어지지 않는 한 붓 그리기 더블 하트 + 넝쿨 */
         .heart-animation-wrap {
             display: flex;
             justify-content: center;
@@ -109,35 +109,48 @@
             margin-bottom: 25px;
         }
         .heart-svg {
-            width: 170px;
-            height: 100px;
+            width: 180px;
+            height: 90px;
             overflow: visible;
         }
-        .heart-line {
+        
+        /* 메인 하트 선 (절대 끊어지지 않는 단일 라인) */
+        .continuous-heart {
             fill: none;
-            stroke: #b09b80; /* 감성적인 톤다운 베이지/브라운 */
-            stroke-width: 1.3;
+            stroke: #b09b80;
+            stroke-width: 1.8;
             stroke-linecap: round;
             stroke-linejoin: round;
-            stroke-dasharray: 200;
-            stroke-dashoffset: 200;
-            animation: drawFloralHeart 6s ease-in-out infinite;
+            stroke-dasharray: 450;
+            stroke-dashoffset: 450;
+            animation: drawContinuous 6s ease-in-out infinite;
         }
-        
-        /* 그리는 순서 및 딜레이 세팅 */
-        .h-delay-0 { animation-delay: 0s; }       /* 가운데 아치 */
-        .h-delay-1 { animation-delay: 0.5s; }     /* 왼쪽 하트 */
-        .h-delay-2 { animation-delay: 1.2s; }     /* 오른쪽 하트 */
-        .h-delay-3 { animation-delay: 1.9s; }     /* 왼쪽 넝쿨과 잎사귀 */
-        .h-delay-4 { animation-delay: 2.3s; }     /* 오른쪽 넝쿨과 잎사귀 */
 
-        @keyframes drawFloralHeart {
-            0%   { stroke-dashoffset: 200; opacity: 0; }
-            5%   { opacity: 1; }
-            35%  { stroke-dashoffset: 0; }
-            80%  { stroke-dashoffset: 0; opacity: 1; }
-            90%  { opacity: 0; stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: 200; opacity: 0; }
+        /* 잎사귀 장식 (선이 지나간 후 스르륵 나타남) */
+        .leaf {
+            fill: #b09b80;
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: fadeLeaf 6s ease-out infinite;
+        }
+        .lf-left { animation-delay: 0.3s; }
+        .lf-right { animation-delay: 2.8s; }
+
+        @keyframes drawContinuous {
+            0% { stroke-dashoffset: 450; opacity: 1; }
+            45% { stroke-dashoffset: 0; }
+            80% { stroke-dashoffset: 0; opacity: 1; }
+            90% { opacity: 0; stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 450; opacity: 0; }
+        }
+
+        @keyframes fadeLeaf {
+            0%, 5% { opacity: 0; transform: scale(0.5); }
+            15% { opacity: 1; transform: scale(1); }
+            80% { opacity: 1; transform: scale(1); }
+            90% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 0; }
         }
 
         /* 모시는 글 */
@@ -175,7 +188,7 @@
             color: #222222;
         }
 
-        /* 상세 정보 박스 (일시 및 장소) */
+        /* 기타 스타일 생략 (기존과 동일하게 유지) */
         .details-box {
             background-color: #faf9f6;
             border: 1px solid #eae6dd;
@@ -218,8 +231,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             background-color: #faf9f6;
         }
-
-        /* 지도 안쪽 상단 카카오맵 오버레이 버튼 */
         .map-overlay-btn {
             position: absolute;
             top: 12px;
@@ -254,19 +265,9 @@
             font-weight: 700;
             font-size: 1rem;
         }
-        .sub-map-btn.naver {
-            background-color: #03C75A;
-            color: #ffffff;
-        }
-        .sub-map-btn.tmap {
-            background-color: #ff4e00;
-            color: #ffffff;
-        }
-        .sub-map-btn.google {
-            background-color: #ffffff;
-            color: #5f6368;
-            border: 1px solid #dadce0;
-        }
+        .sub-map-btn.naver { background-color: #03C75A; color: #ffffff; }
+        .sub-map-btn.tmap { background-color: #ff4e00; color: #ffffff; }
+        .sub-map-btn.google { background-color: #ffffff; color: #5f6368; border: 1px solid #dadce0; }
 
         /* 오시는 길 교통 정보 스타일 */
         .transport-box {
@@ -320,11 +321,9 @@
             font-size: 0.9rem;
             margin-right: 5px;
         }
-        .transport-desc .subway-tag {
-            background-color: #37b422;
-        }
+        .transport-desc .subway-tag { background-color: #37b422; }
 
-        /* 갤러리(사진첩) 섹션 스타일 */
+        /* 갤러리 섹션 스타일 */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -344,13 +343,8 @@
             font-size: 0.95rem;
             overflow: hidden;
         }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
 
-        /* 아코디언 스타일 */
+        /* 마음 전하실 곳 아코디언 & 버튼 */
         .accordion-btn {
             width: 100%;
             background-color: #faf9f6;
@@ -365,9 +359,7 @@
             text-align: center;
             transition: all 0.2s ease;
         }
-        .accordion-btn:hover {
-            background-color: #f3f0e8;
-        }
+        .accordion-btn:hover { background-color: #f3f0e8; }
         .accordion-content {
             display: none;
             background-color: #fcfbfa;
@@ -379,8 +371,6 @@
             border-radius: 0 0 6px 6px;
             text-align: left;
         }
-        
-        /* 정보 로우 스타일 */
         .info-row {
             display: flex;
             justify-content: space-between;
@@ -390,24 +380,18 @@
             padding: 14px 0;
             border-bottom: 1px dashed #eae6dd;
         }
-        .info-row:last-child {
-            border-bottom: none;
-        }
+        .info-row:last-child { border-bottom: none; }
         .info-row .acc-text {
             display: block;
             font-size: 0.95rem;
             color: #666666;
             margin-top: 4px;
         }
-        
-        /* 커뮤니케이션 액션 아이콘 버튼 모음 공간 */
         .btn-action-group {
             display: flex;
             align-items: center;
             gap: 6px;
         }
-        
-        /* 원형 통화 및 문자 버튼 베이스 */
         .acc-comm-btn {
             text-decoration: none;
             background-color: #faf4eb;
@@ -425,8 +409,6 @@
             background-color: #ebdcb9;
             transform: scale(1.05);
         }
-
-        /* 복사 버튼 디자인 */
         .copy-button {
             background-color: #8a7355;
             color: #ffffff;
@@ -467,37 +449,31 @@
 
     <!-- 2. 모시는 글 -->
     <div class="section">
-        <!-- 🌿 첨부 이미지 완벽 구현: 우아한 넝쿨 더블 하트 애니메이션 -->
+        <!-- 🌿 끊어지지 않는 '한 붓 그리기' 연속 더블 하트 + 양쪽 넝쿨 잎사귀 -->
         <div class="heart-animation-wrap">
             <svg class="heart-svg" viewBox="0 0 100 60">
-                <!-- 가운데 중심 아치 -->
-                <path class="heart-line h-delay-0" d="M 38,26 C 45,21 55,21 62,26" />
                 
-                <!-- 왼쪽 메인 덩굴 하트 -->
-                <path class="heart-line h-delay-1" d="M 46,24 C 30,6 10,22 22,42 C 30,55 45,47 53,38" />
-                
-                <!-- 오른쪽 메인 덩굴 하트 -->
-                <path class="heart-line h-delay-2" d="M 54,24 C 70,6 90,22 78,42 C 70,55 55,47 47,38" />
+                <!-- 끊어짐 없이 단 하나의 <path> 로 이어지는 완벽한 2개의 하트 라인 -->
+                <path class="continuous-heart" 
+                      d="M 10 35 
+                         Q 20 35 35 45 
+                         C 15 35 20 10 35 20 
+                         C 50 10 55 35 35 45 
+                         C 42 40 48 40 55 45 
+                         C 35 35 40 10 55 20 
+                         C 70 10 75 35 55 45 
+                         Q 70 35 90 35" />
 
-                <!-- 왼쪽 뻗어나가는 넝쿨 및 잎사귀 -->
-                <path class="heart-line h-delay-3" d="M 20,32 C 15,26 12,20 8,15" />
-                <path class="heart-line h-delay-3" d="M 15,26 C 11,25 9,27 11,29 Z" />
-                <path class="heart-line h-delay-3" d="M 11,20 C 14,19 16,17 13,16 Z" />
-                <path class="heart-line h-delay-3" d="M 8,15 C 5,15 3,18 6,19 Z" />
-                
-                <path class="heart-line h-delay-3" d="M 24,43 C 18,46 13,48 8,51" />
-                <path class="heart-line h-delay-3" d="M 16,47 C 15,44 12,43 12,46 Z" />
-                <path class="heart-line h-delay-3" d="M 8,51 C 6,48 4,49 5,52 Z" />
+                <!-- 왼쪽 잎사귀 장식들 -->
+                <path class="leaf lf-left" d="M 20 38 Q 16 42 12 40 Q 15 35 20 38 Z" />
+                <path class="leaf lf-left" d="M 26 39 Q 22 45 18 44 Q 22 38 26 39 Z" />
+                <path class="leaf lf-left" d="M 16 35 Q 12 30 16 28 Q 19 32 16 35 Z" />
 
-                <!-- 오른쪽 뻗어나가는 넝쿨 및 잎사귀 -->
-                <path class="heart-line h-delay-4" d="M 80,32 C 85,26 88,20 92,15" />
-                <path class="heart-line h-delay-4" d="M 85,26 C 89,25 91,27 89,29 Z" />
-                <path class="heart-line h-delay-4" d="M 89,20 C 86,19 84,17 87,16 Z" />
-                <path class="heart-line h-delay-4" d="M 92,15 C 95,15 97,18 94,19 Z" />
+                <!-- 오른쪽 잎사귀 장식들 -->
+                <path class="leaf lf-right" d="M 80 38 Q 84 42 88 40 Q 85 35 80 38 Z" />
+                <path class="leaf lf-right" d="M 74 39 Q 78 45 82 44 Q 78 38 74 39 Z" />
+                <path class="leaf lf-right" d="M 84 35 Q 88 30 84 28 Q 81 32 84 35 Z" />
                 
-                <path class="heart-line h-delay-4" d="M 76,43 C 82,46 87,48 92,51" />
-                <path class="heart-line h-delay-4" d="M 84,47 C 85,44 88,43 88,46 Z" />
-                <path class="heart-line h-delay-4" d="M 92,51 C 94,48 96,49 95,52 Z" />
             </svg>
         </div>
 
@@ -512,7 +488,7 @@
             더없는 기쁨으로 간직하겠습니다.
         </p>
 
-        <!-- 혼주 관계 및 신랑신부 (의 삭제, 장남/장녀로 수정) -->
+        <!-- 혼주 관계 및 신랑신부 (장남/장녀 반영, '의' 삭제) -->
         <div class="wedding-relations">
             <div class="relation-row">
                 <span>김진근</span> · <span>박정희</span> <span class="relation-small">장남</span> <span class="relation-name-main">김태형</span>
