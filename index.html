@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph & Sharon's Wedding Invitation</title>
+    <title>태형 & 샤론's Wedding Invitation</title>
+    <!-- 구글 폰트 추가 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,400;0,600;1,400&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* 기본 스타일 초기화 */
         * {
@@ -56,14 +57,15 @@
             margin: 0 auto 40px auto;
         }
         .hero .names {
-            font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
-            font-size: 2.8rem;
+            font-family: 'Noto Serif KR', serif;
+            font-size: 2.4rem;
             font-weight: 400;
             color: #222222;
             margin-bottom: 15px;
             letter-spacing: 2px;
         }
         .hero .names span {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             color: #b09b80;
             margin: 0 10px;
@@ -99,49 +101,67 @@
             font-weight: 700;
         }
         
-        /* 💡 신규 추가: 나뭇가지 두개 하트 드로잉 애니메이션 스타일 */
+        /* 연속 드로잉 중첩 하트 & 풍성한 나뭇잎 애니메이션 */
         .heart-animation-wrap {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .heart-svg {
-            width: 150px;
-            height: 90px;
+            width: 180px;
+            height: 100px;
         }
         .heart-branch {
             stroke: #8a7355;
-            stroke-width: 2;
+            stroke-width: 2.5;
             fill: none;
             stroke-linecap: round;
             stroke-linejoin: round;
-            stroke-dasharray: 400;
-            stroke-dashoffset: 400;
-            animation: drawBranches 4.5s ease-in-out infinite;
+            stroke-dasharray: 250;
+            stroke-dashoffset: 250;
+        }
+        .heart-branch.left {
+            animation: drawLeftBranch 6s ease-in-out infinite;
         }
         .heart-branch.right {
-            animation-delay: 0.4s;
+            animation: drawRightBranch 6s ease-in-out infinite;
         }
+        
         .heart-leaf {
             fill: #8a7355;
             opacity: 0;
-            animation: fadeInLeaves 4.5s ease-in-out infinite;
+            transform-origin: center;
         }
-        .heart-leaf.right {
-            animation-delay: 0.4s;
-        }
-        @keyframes drawBranches {
-            0% { stroke-dashoffset: 400; }
-            45% { stroke-dashoffset: 0; }
+        .l-lf-1 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 0.5s; }
+        .l-lf-2 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 1.0s; }
+        .l-lf-3 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 1.5s; }
+        .l-lf-4 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 2.0s; }
+        
+        .r-lf-1 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 2.3s; }
+        .r-lf-2 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 2.8s; }
+        .r-lf-3 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 3.3s; }
+        .r-lf-4 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 3.8s; }
+
+        @keyframes drawLeftBranch {
+            0% { stroke-dashoffset: 250; }
+            33% { stroke-dashoffset: 0; }
             85% { stroke-dashoffset: 0; opacity: 1; }
-            95% { opacity: 0; stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: 400; opacity: 0; }
+            93% { opacity: 0; stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 250; opacity: 0; }
         }
-        @keyframes fadeInLeaves {
-            0%, 35% { opacity: 0; }
-            55%, 85% { opacity: 1; }
-            95% { opacity: 0; }
+        @keyframes drawRightBranch {
+            0%, 28% { stroke-dashoffset: 250; }
+            63% { stroke-dashoffset: 0; }
+            85% { stroke-dashoffset: 0; opacity: 1; }
+            93% { opacity: 0; stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 250; opacity: 0; }
+        }
+        @keyframes fadeInLeaf {
+            0% { opacity: 0; transform: scale(0.5); }
+            15% { opacity: 1; transform: scale(1); }
+            85% { opacity: 1; transform: scale(1); }
+            93% { opacity: 0; }
             100% { opacity: 0; }
         }
 
@@ -302,12 +322,6 @@
         .transport-desc .subway-tag {
             background-color: #37b422;
         }
-        .bus-route {
-            margin-bottom: 12px;
-        }
-        .bus-route:last-child {
-            margin-bottom: 0;
-        }
 
         /* 갤러리(사진첩) 섹션 스타일 */
         .gallery-grid {
@@ -385,23 +399,23 @@
             margin-top: 4px;
         }
         
-        /* 전화 버튼 디자인 */
-        .phone-btn {
+        /* 💡 신규 추가: 계좌번호 옆 전화기 이모티콘 버튼 스타일 */
+        .acc-phone-btn {
+            text-decoration: none;
+            font-size: 0.9rem;
             background-color: #faf4eb;
-            color: #8a7355;
             border: 1px solid #e3d7c5;
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            text-decoration: none;
+            transition: background-color 0.2s;
         }
-        .phone-btn svg {
-            width: 18px;
-            height: 18px;
+        .acc-phone-btn:hover {
+            background-color: #e3d7c5;
         }
 
         /* 복사 버튼 디자인 */
@@ -426,6 +440,7 @@
 
 <div class="wrapper">
     
+    <!-- 1. 메인 섹션 -->
     <div class="hero">
         <div class="main-title">
             2026.08.08 오후 1시<br>
@@ -435,26 +450,28 @@
         <div class="divider-line"></div>
         
         <div class="names">
-            Joseph <span>&</span> Sharon
+            태형 <span>&</span> 샤론
         </div>
         <div class="sub-txt">Wedding Invitation</div>
     </div>
 
     <div class="section-divider">❖</div>
 
+    <!-- 2. 모시는 글 -->
     <div class="section">
         <div class="heart-animation-wrap">
             <svg class="heart-svg" viewBox="0 0 200 100">
-                <path class="heart-branch left" d="M 75,45 C 60,18 20,20 20,48 C 20,73 50,90 75,100 C 80,95 85,90 90,83" />
-                <path class="heart-leaf left" d="M 32,28 Q 26,22 34,18 Q 40,24 32,28 Z" />
-                <path class="heart-leaf left" d="M 50,22 Q 48,14 56,12 Q 58,20 50,22 Z" />
-                
-                <path class="heart-branch right" d="M 125,45 C 140,18 180,20 180,48 C 180,73 150,90 125,100 C 115,92 105,83 95,73" />
-                <path class="heart-leaf right" d="M 168,28 Q 174,22 166,18 Q 160,24 168,28 Z" />
-                <path class="heart-leaf right" d="M 150,22 Q 152,14 144,12 Q 142,20 150,22 Z" />
-                
-                <circle cx="75" cy="45" r="2" fill="#8a7355" class="heart-leaf left"/>
-                <circle cx="125" cy="45" r="2" fill="#8a7355" class="heart-leaf right"/>
+                <path class="heart-branch left" d="M 92,85 C 50,58 32,25 62,18 C 82,12 95,35 102,46" />
+                <path class="heart-leaf l-lf-1" d="M 45,46 Q 36,44 40,36 Q 49,40 45,46 Z" />
+                <path class="heart-leaf l-lf-2" d="M 50,25 Q 43,18 52,14 Q 57,22 50,25 Z" />
+                <path class="heart-leaf l-lf-3" d="M 74,15 Q 77,6 85,10 Q 81,19 74,15 Z" />
+                <path class="heart-leaf l-lf-4" d="M 93,27 Q 98,18 104,23 Q 98,31 93,27 Z" />
+
+                <path class="heart-branch right" d="M 98,46 C 105,35 118,12 138,18 C 168,25 150,58 108,85" />
+                <path class="heart-leaf r-lf-1" d="M 107,27 Q 102,18 108,23 Q 113,31 107,27 Z" />
+                <path class="heart-leaf r-lf-2" d="M 126,15 Q 123,6 131,10 Q 127,19 126,15 Z" />
+                <path class="heart-leaf r-lf-3" d="M 150,25 Q 157,18 148,14 Q 143,22 150,25 Z" />
+                <path class="heart-leaf r-lf-4" d="M 155,46 Q 164,44 160,36 Q 151,40 155,46 Z" />
             </svg>
         </div>
 
@@ -472,6 +489,7 @@
 
     <div class="section-divider">❖</div>
 
+    <!-- 3. 일시 및 장소 상세 -->
     <div class="section">
         <h2 class="section-title">일시 및 장소</h2>
         <div class="details-box">
@@ -489,6 +507,7 @@
             </div>
         </div>
 
+        <!-- 마우스/손가락으로 움직이는 카카오 대화형 지도 박스 -->
         <div class="map-container">
             <a href="https://map.kakao.com/link/search/서울시 관악구 인헌1길 29" target="_blank" class="map-overlay-btn">
                 카카오맵으로 열기
@@ -496,13 +515,16 @@
             <div id="daum-map-canvas" style="width:100%; height:100%;"></div>
         </div>
 
+        <!-- 하단 네이버, 티맵, 구글맵 서브 버튼 그리드 -->
         <div class="sub-map-grid">
             <a href="https://map.naver.com/v5/search/서울시 관악구 인헌1길 29" target="_blank" class="sub-map-btn naver">네이버 지도</a>
             <a href="tmap://search?name=서울시 관악구 인헌1길 29" class="sub-map-btn tmap">티맵(TMAP)</a>
             <a href="https://www.google.com/maps/search/?api=1&query=서울시 관악구 인헌1길 29" target="_blank" class="sub-map-btn google">구글맵</a>
         </div>
 
+        <!-- 오시는 길 교통 정보 안내 사항 -->
         <div class="transport-box">
+            <!-- 자차 안내 -->
             <div class="transport-item">
                 <div class="transport-title">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
@@ -513,23 +535,7 @@
                 </div>
             </div>
 
-            <div class="transport-item">
-                <div class="transport-title">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="16" rx="2"/><line x1="4" y1="11" x2="20" y2="11"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="16" y1="15" x2="16" y2="15.01"/><path d="M6 19v2"/><path d="M18 19v2"/></svg>
-                    버스
-                </div>
-                <div class="transport-desc">
-                    <div class="bus-route">
-                        <span class="route-tag">8551</span>(서울대입구역 방면)<br>
-                        서울여성문화회관 하차 → <strong>도보 5분</strong>
-                    </div>
-                    <div class="bus-route">
-                        <span class="route-tag">651</span>(낙성대역 방면)<br>
-                        서울여성문화회관 하차 → <strong>도보 5분</strong>
-                    </div>
-                </div>
-            </div>
-
+            <!-- 지하철 안내 -->
             <div class="transport-item">
                 <div class="transport-title">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="M8 14h8"/><path d="M6 17l-2 3"/><path d="M18 17l2 3"/></svg>
@@ -541,6 +547,7 @@
                 </div>
             </div>
 
+            <!-- 주차 안내 -->
             <div class="transport-item">
                 <div class="transport-title" style="color: #d9534f;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #d9534f;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
@@ -551,6 +558,7 @@
                 </div>
             </div>
 
+            <!-- 식사 안내 Dining -->
             <div class="transport-item">
                 <div class="transport-title">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v8c0 1.1.9 2 2 2h3c0-1.1-.9-2-2-2z"/><path d="M18 17v5"/></svg>
@@ -565,6 +573,7 @@
 
     <div class="section-divider">❖</div>
 
+    <!-- 4. 갤러리 섹션 -->
     <div class="section">
         <h2 class="section-title">우리의 아름다운 순간</h2>
         <div class="gallery-grid">
@@ -585,94 +594,66 @@
 
     <div class="section-divider">❖</div>
 
+    <!-- 5. 마음 전하실 곳 -->
     <div class="section">
         <h2 class="section-title">마음 전하실 곳</h2>
         
+        <!-- 신랑측 계좌 펼치기 -->
         <button class="accordion-btn" onclick="toggleAccordion('groom-acc')">신랑측 계좌번호</button>
         <div id="groom-acc" class="account-content accordion-content">
             <div class="info-row">
-                <span><strong>김태형</strong><span class="role-tag">신랑</span><span class="acc-text">국민은행 652702  04  348581</span></span>
-                <button class="copy-button" onclick="copyText('652702  04  348581')">복사</button>
+                <span><strong>김태형</strong><span class="role-tag">신랑</span><span class="acc-text">OO은행 123-456-78901</span></span>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <button class="copy-button" onclick="copyText('123-456-78901')">복사</button>
+                </div>
             </div>
             <div class="info-row">
-                <span><strong>김진근</strong><span class="role-tag">아버지</span><span class="acc-text">농협은행 185  12  027972</span></span>
-                <button class="copy-button" onclick="copyText('185  12  027972')">복사</button>
+                <span><strong>김진근</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+                </div>
             </div>
             <div class="info-row">
-                <span><strong>박정희</strong><span class="role-tag">어머니</span><span class="acc-text">국민은행 954201  00  047392</span></span>
-                <button class="copy-button" onclick="copyText('954201  00  047392')">복사</button>
+                <span><strong>박정희</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+                </div>
             </div>
         </div>
 
+        <!-- 신부측 계좌 펼치기 -->
         <button class="accordion-btn" onclick="toggleAccordion('bride-acc')">신부측 계좌번호</button>
         <div id="bride-acc" class="account-content accordion-content">
             <div class="info-row">
-                <span><strong>조샤론</strong><span class="role-tag">신부</span><span class="acc-text">하나은행 52391010024307</span></span>
-                <button class="copy-button" onclick="copyText('52391010024307')">복사</button>
+                <span><strong>조샤론</strong><span class="role-tag">신부</span><span class="acc-text">OO은행 987-654-32109</span></span>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <button class="copy-button" onclick="copyText('987-654-32109')">복사</button>
+                </div>
             </div>
             <div class="info-row">
-                <span><strong>조계진</strong><span class="role-tag">아버지</span><span class="acc-text">시티은행 4031402226501</span></span>
-                <button class="copy-button" onclick="copyText('4031402226501')">복사</button>
+                <span><strong>조계진</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+                </div>
             </div>
             <div class="info-row">
-                <span><strong>김성화</strong><span class="role-tag">어머니</span><span class="acc-text">새마을금고 9004003190786</span></span>
-                <button class="copy-button" onclick="copyText('9004003190786')">복사</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-divider">❖</div>
-
-    <div class="section">
-        <h2 class="section-title">연락하기</h2>
-        
-        <button class="accordion-btn" onclick="toggleAccordion('groom-contact')">신랑측 연락처</button>
-        <div id="groom-contact" class="accordion-content">
-            <div class="info-row">
-                <span><strong>김태형</strong><span class="role-tag">신랑</span></span>
-                <a href="tel:010-0000-0000" class="phone-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </a>
-            </div>
-            <div class="info-row">
-                <span><strong>김진근</strong><span class="role-tag">아버님</span></span>
-                <a href="tel:010-0000-0000" class="phone-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </a>
-            </div>
-            <div class="info-row">
-                <span><strong>박정희</strong><span class="role-tag">어머님</span></span>
-                <a href="tel:010-0000-0000" class="phone-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </a>
-            </div>
-        </div>
-
-        <button class="accordion-btn" onclick="toggleAccordion('bride-contact')">신부측 연락처</button>
-        <div id="bride-contact" class="accordion-content">
-            <div class="info-row">
-                <span><strong>조샤론</strong><span class="role-tag">신부</span></span>
-                <a href="tel:010-0000-0000" class="phone-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </a>
-            </div>
-            <div class="info-row">
-                <span><strong>조계진</strong><span class="role-tag">아버님</span></span>
-                <a href="tel:010-0000-0000" class="phone-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </a>
-            </div>
-            <div class="info-row">
-                <span><strong>김성화</strong><span class="role-tag">어머님</span></span>
-                <a href="tel:010-0000-0000" class="phone-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </a>
+                <span><strong>김성화</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+                </div>
             </div>
         </div>
     </div>
 
 </div>
 
+<!-- 카카오 지도 공식 시스템 연결 -->
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0ea4f9fff2139a0f669333253cecda58&libraries=services"></script>
 <script>
     // 1. 아코디언 및 복사 시스템 코드
