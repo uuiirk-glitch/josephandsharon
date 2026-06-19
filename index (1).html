@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joseph & Sharon's Wedding Invitation</title>
-    <!-- 구글 폰트 추가 (고급스러운 Serif 및 Sans-serif 폰트) -->
+    <!-- 구글 폰트 추가 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* 기본 스타일 초기화 */
         * {
@@ -25,7 +25,7 @@
             min-height: 100vh;
             line-height: 1.6;
         }
-        /* 모바일 청첩장 컨테이너 (스마트폰 화면 비율 고정) */
+        /* 모바일 청첩장 컨테이너 */
         .wrapper {
             width: 100%;
             max-width: 450px;
@@ -41,11 +41,10 @@
             padding: 80px 20px 60px 20px;
             background: linear-gradient(to bottom, #faf9f5 0%, #ffffff 100%);
         }
-        /* 요청하신 메인 문구 (일시 및 장소) - 크고 선명하게 조정 */
         .hero .main-title {
             font-family: 'Noto Serif KR', serif;
-            font-size: 1.5rem; /* 글자 크기 대폭 확대 */
-            font-weight: 600;
+            font-size: 1.6rem;
+            font-weight: 700;
             color: #8a7355;
             line-height: 1.8;
             letter-spacing: 1px;
@@ -57,23 +56,22 @@
             background-color: #d1c4b2;
             margin: 0 auto 40px auto;
         }
-        /* 신랑 신부 이름 섹션 */
         .hero .names {
             font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 400;
             color: #222222;
             margin-bottom: 15px;
             letter-spacing: 2px;
         }
         .hero .names span {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #b09b80;
             margin: 0 10px;
             vertical-align: middle;
         }
         .hero .sub-txt {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #888888;
             letter-spacing: 4px;
             text-transform: uppercase;
@@ -84,30 +82,30 @@
             text-align: center;
             margin: 40px 0;
             color: #d1c4b2;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 300;
         }
 
         /* 2. 본문 섹션 스타일 */
         .section {
-            padding: 20px 30px;
+            padding: 20px 25px;
             text-align: center;
         }
         .section-title {
             font-family: 'Noto Serif KR', serif;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: #8a7355;
             letter-spacing: 3px;
-            margin-bottom: 30px;
-            font-weight: 600;
+            margin-bottom: 25px;
+            font-weight: 700;
         }
         
         /* 모시는 글 */
         .greeting-p {
             font-family: 'Noto Serif KR', serif;
-            font-size: 0.95rem;
-            line-height: 2.3;
-            color: #444444;
+            font-size: 1.1rem;
+            line-height: 2.4;
+            color: #333333;
             word-break: keep-all;
         }
 
@@ -121,95 +119,214 @@
             margin-top: 10px;
         }
         .details-item {
-            margin-bottom: 15px;
-            font-size: 0.95rem;
+            margin-bottom: 20px;
             display: flex;
+            align-items: flex-start;
         }
         .details-item:last-child {
             margin-bottom: 0;
         }
         .details-item .label {
-            font-weight: bold;
+            font-weight: 700;
             color: #8a7355;
-            width: 70px;
+            width: 75px;
             flex-shrink: 0;
+            font-size: 1.2rem;
         }
         .details-item .val {
-            color: #444444;
+            color: #222222;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            word-break: keep-all;
         }
 
-        /* 안내 사항 리스트 */
+        /* 대화형 카카오 지도 상자 */
+        .map-container {
+            margin-top: 20px;
+            width: 100%;
+            height: 280px;
+            border: 1px solid #eae6dd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background-color: #faf9f6;
+        }
+
+        /* 내비게이션 버튼 스타일 */
+        .main-map-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 14px;
+            background-color: #fee500;
+            color: #191919;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            border: 1px solid #eed000;
+        }
+        .sub-map-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .sub-map-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 5px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .sub-map-btn.naver {
+            background-color: #03C75A;
+            color: #ffffff;
+        }
+        .sub-map-btn.tmap {
+            background-color: #ff4e00;
+            color: #ffffff;
+        }
+        .sub-map-btn.google {
+            background-color: #ffffff;
+            color: #5f6368;
+            border: 1px solid #dadce0;
+        }
+
+        /* 갤러리(사진첩) 섹션 스타일 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .gallery-item {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #faf9f6;
+            border: 1px solid #eae6dd;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #aaaaaa;
+            font-size: 0.95rem;
+            overflow: hidden;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 하객 안내 사항 리스트 */
         .guide-list {
             text-align: left;
             list-style: none;
             background-color: #fcfbfa;
-            padding: 20px;
+            padding: 25px 20px;
             border-radius: 8px;
-            border-left: 3px solid #d1c4b2;
+            border-left: 4px solid #d1c4b2;
         }
         .guide-list li {
-            font-size: 0.9rem;
-            color: #555555;
-            margin-bottom: 12px;
-            line-height: 1.6;
+            font-size: 1.15rem;
+            color: #222222;
+            margin-bottom: 20px;
+            line-height: 1.8;
             word-break: keep-all;
         }
         .guide-list li:last-child {
             margin-bottom: 0;
         }
 
-        /* 3. 마음 전하실 곳 (축의금 계좌 아코디언 스타일) */
-        .account-btn {
+        /* 아코디언 스타일 */
+        .accordion-btn {
             width: 100%;
             background-color: #faf9f6;
             border: 1px solid #eae6dd;
-            padding: 15px;
-            font-size: 0.95rem;
-            color: #555555;
+            padding: 16px;
+            font-size: 1.1rem;
+            color: #444444;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 500;
-            margin-bottom: 10px;
+            font-weight: 700;
+            margin-bottom: 12px;
             text-align: center;
             transition: all 0.2s ease;
         }
-        .account-btn:hover {
+        .accordion-btn:hover {
             background-color: #f3f0e8;
         }
-        .account-content {
-            display: none; /* 기본적으로 닫힘 상태 */
+        .accordion-content {
+            display: none;
             background-color: #fcfbfa;
             border: 1px solid #eae6dd;
             border-top: none;
-            margin-top: -10px;
+            margin-top: -12px;
             margin-bottom: 15px;
-            padding: 15px;
+            padding: 10px 20px;
             border-radius: 0 0 6px 6px;
             text-align: left;
         }
-        .account-row {
+        
+        /* 정보 로우 스타일 */
+        .info-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
-            color: #444444;
-            padding: 8px 0;
+            font-size: 1.05rem;
+            color: #333333;
+            padding: 14px 0;
             border-bottom: 1px dashed #eae6dd;
         }
-        .account-row:last-child {
+        .info-row:last-child {
             border-bottom: none;
         }
+        .info-row .acc-text {
+            display: block;
+            font-size: 0.95rem;
+            color: #666666;
+            margin-top: 4px;
+        }
+        
+        /* 전화 버튼 디자인 */
+        .phone-btn {
+            background-color: #faf4eb;
+            color: #8a7355;
+            border: 1px solid #e3d7c5;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .phone-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* 복사 버튼 디자인 */
         .copy-button {
             background-color: #8a7355;
             color: #ffffff;
             border: none;
-            padding: 4px 8px;
-            font-size: 0.75rem;
+            padding: 6px 12px;
+            font-size: 0.85rem;
             border-radius: 4px;
             cursor: pointer;
         }
-        .copy-button:hover {
-            background-color: #705d44;
+        .role-tag {
+            font-size: 0.85rem;
+            color: #888888;
+            margin-left: 6px;
+            font-weight: normal;
         }
     </style>
 </head>
@@ -219,7 +336,6 @@
     
     <!-- 1. 메인 섹션 -->
     <div class="hero">
-        <!-- 요청하신 문구를 가장 크고 돋보이게 상단 배치 -->
         <div class="main-title">
             2026.08.08 오후 1시<br>
             시냇가푸른교회 모리아홀 3층
@@ -251,7 +367,7 @@
 
     <div class="section-divider">❖</div>
 
-    <!-- 3. 일시 및 장소 상세 -->
+    <!-- 3. 일시 및 장소 상세 (움직이는 실시간 카카오 지도 완벽 연동) -->
     <div class="section">
         <h2 class="section-title">일시 및 장소</h2>
         <div class="details-box">
@@ -265,53 +381,162 @@
             </div>
             <div class="details-item">
                 <span class="label">주소</span>
-                <span class="val">서울특별시 OOO구 OOO로 OO (정확한 주소로 변경하여 사용하세요)</span>
+                <span class="val">서울시 관악구 인헌1길-29</span>
+            </div>
+        </div>
+
+        <!-- 마우스/손가락으로 움직이는 카카오 지도 삽입 공간 -->
+        <div class="map-container">
+            <div id="daum-map-canvas" style="width:100%; height:100%;"></div>
+        </div>
+
+        <!-- 메인 카카오맵 버튼 -->
+        <a href="https://map.kakao.com/link/search/서울시 관악구 인헌1길 29" target="_blank" class="main-map-btn">
+            💛 카카오맵으로 길찾기
+        </a>
+
+        <!-- 하단 네이버, 티맵, 구글맵 서브 버튼 그리드 -->
+        <div class="sub-map-grid">
+            <a href="https://map.naver.com/v5/search/서울시 관악구 인헌1길 29" target="_blank" class="sub-map-btn naver">네이버 지도</a>
+            <a href="tmap://search?name=서울시 관악구 인헌1길 29" class="sub-map-btn tmap">티맵(TMAP)</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=서울시 관악구 인헌1길 29" target="_blank" class="sub-map-btn google">구글맵</a>
+        </div>
+    </div>
+
+    <div class="section-divider">❖</div>
+
+    <!-- 4. 갤러리 섹션 -->
+    <div class="section">
+        <h2 class="section-title">우리의 아름다운 순간</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <span style="padding:10px;">사진 준비 중입니다 💍</span>
+            </div>
+            <div class="gallery-item">
+                <span>사진 준비 중입니다 ✨</span>
+            </div>
+            <div class="gallery-item">
+                <span>사진 준비 중입니다 ♡</span>
+            </div>
+            <div class="gallery-item">
+                <span>사진 준비 중입니다 🌿</span>
             </div>
         </div>
     </div>
 
     <div class="section-divider">❖</div>
 
-    <!-- 4. 하객 안내 사항 -->
+    <!-- 5. 연락하기 섹션 -->
+    <div class="section">
+        <h2 class="section-title">연락하기</h2>
+        
+        <!-- 신랑측 연락처 -->
+        <button class="accordion-btn" onclick="toggleAccordion('groom-contact')">신랑측 연락처</button>
+        <div id="groom-contact" class="accordion-content">
+            <div class="info-row">
+                <span><strong>김태형</strong><span class="role-tag">신랑</span></span>
+                <a href="tel:010-0000-0000" class="phone-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+            <div class="info-row">
+                <span><strong>김진근</strong><span class="role-tag">아버님</span></span>
+                <a href="tel:010-0000-0000" class="phone-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+            <div class="info-row">
+                <span><strong>박정희</strong><span class="role-tag">어머님</span></span>
+                <a href="tel:010-0000-0000" class="phone-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- 신부측 연락처 -->
+        <button class="accordion-btn" onclick="toggleAccordion('bride-contact')">신부측 연락처</button>
+        <div id="bride-contact" class="accordion-content">
+            <div class="info-row">
+                <span><strong>조샤론</strong><span class="role-tag">신부</span></span>
+                <a href="tel:010-0000-0000" class="phone-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+            <div class="info-row">
+                <span><strong>조계진</strong><span class="role-tag">아버님</span></span>
+                <a href="tel:010-0000-0000" class="phone-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+            <div class="info-row">
+                <span><strong>김성화</strong><span class="role-tag">어머님</span></span>
+                <a href="tel:010-0000-0000" class="phone-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider">❖</div>
+
+    <!-- 6. 하객 안내 사항 -->
     <div class="section">
         <h2 class="section-title">하객 안내 사항</h2>
         <ul class="guide-list">
             <li>• <strong>주차 안내:</strong> 교회 내 주차장 이용이 가능하나 정체될 수 있으니 가급적 대중교통 이용을 부탁드립니다.</li>
-            <li>• <strong>피로연 안내:</strong> 예식 종료 후 교회 내 피로연장에 정성 어린 식사가 준비되어 있습니다.</li>
+            <li>• <strong>피로연 안내:</strong> 예식전 오후 12시와 오후 2시에 교회 내 피로연장에 정성 어린 식사가 준비되어 있습니다.</li>
             <li>• <strong>마음 전하실 곳:</strong> 축복해 주시는 따뜻한 마음 감사히 간직하겠습니다.</li>
         </ul>
     </div>
 
     <div class="section-divider">❖</div>
 
-    <!-- 5. 마음 전하실 곳 (축의금 계좌) -->
+    <!-- 7. 마음 전하실 곳 -->
     <div class="section">
         <h2 class="section-title">마음 전하실 곳</h2>
         
-        <!-- 신랑측 -->
-        <button class="account-btn" onclick="toggleAccount('groom-acc')">신랑측 계좌번호 확인하기</button>
-        <div id="groom-acc" class="account-content">
-            <div class="account-row">
-                <span>OO은행 123-456-78901 (예금주: 요셉)</span>
+        <!-- 신랑측 계좌 펼치기 -->
+        <button class="accordion-btn" onclick="toggleAccordion('groom-acc')">신랑측 계좌번호</button>
+        <div id="groom-acc" class="account-content accordion-content">
+            <div class="info-row">
+                <span><strong>김태형</strong><span class="role-tag">신랑</span><span class="acc-text">OO은행 123-456-78901</span></span>
                 <button class="copy-button" onclick="copyText('123-456-78901')">복사</button>
+            </div>
+            <div class="info-row">
+                <span><strong>김진근</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+            </div>
+            <div class="info-row">
+                <span><strong>박정희</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
             </div>
         </div>
 
-        <!-- 신부측 -->
-        <button class="account-btn" onclick="toggleAccount('bride-acc')">신부측 계좌번호 확인하기</button>
-        <div id="bride-acc" class="account-content">
-            <div class="account-row">
-                <span>OO은행 987-654-32109 (예금주: 샤론)</span>
+        <!-- 신부측 계좌 펼치기 -->
+        <button class="accordion-btn" onclick="toggleAccordion('bride-acc')">신부측 계좌번호</button>
+        <div id="bride-acc" class="account-content accordion-content">
+            <div class="info-row">
+                <span><strong>조샤론</strong><span class="role-tag">신부</span><span class="acc-text">OO은행 987-654-32109</span></span>
                 <button class="copy-button" onclick="copyText('987-654-32109')">복사</button>
+            </div>
+            <div class="info-row">
+                <span><strong>조계진</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+            </div>
+            <div class="info-row">
+                <span><strong>김성화</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
             </div>
         </div>
     </div>
 
 </div>
 
+<!-- ★ 카카오 지도 공식 시스템 연결 (새로운 자바스크립트 앱키 반영 완료) -->
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0ea4f9fff2139a0f669333253cecda58&libraries=services"></script>
 <script>
-    // 계좌번호 아코디언 토글 함수
-    function toggleAccount(id) {
+    // 1. 아코디언 및 복사 시스템 코드
+    function toggleAccordion(id) {
         var element = document.getElementById(id);
         if (element.style.display === "block") {
             element.style.display = "none";
@@ -320,7 +545,6 @@
         }
     }
 
-    // 계좌번호 클립보드 복사 함수
     function copyText(text) {
         navigator.clipboard.writeText(text).then(function() {
             alert("계좌번호가 복사되었습니다.");
@@ -328,6 +552,38 @@
             alert("복사에 실패했습니다. 수동으로 복사해 주세요.");
         });
     }
+
+    // 2. 실시간 카카오 지도 자동 탐색 및 생성 코드
+    var mapContainer = document.getElementById('daum-map-canvas');
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    // 주소로 검색하여 자동으로 정중앙 마커 생성
+    geocoder.addressSearch('서울시 관악구 인헌1길 29', function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            
+            var mapOption = {
+                center: coords,
+                level: 3 // 지도 확대 단계
+            };
+            
+            var map = new kakao.maps.Map(mapContainer, mapOption);
+            
+            // 지도 위에 핀 꽂기
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: coords
+            });
+            
+            // 작은 말풍선 이름 띄우기
+            var infowindow = new kakao.maps.InfoWindow({
+                content: '<div style="width:150px;text-align:center;padding:6px 0;font-size:0.9rem;font-weight:bold;color:#222;">시냇가푸른교회</div>'
+            });
+            infowindow.open(map, marker);
+        } else {
+            mapContainer.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100%;color:#888;font-size:0.9rem;text-align:center;padding:20px;">지도 주소를 다시 확인해주세요.</div>';
+        }
+    });
 </script>
 
 </body>
