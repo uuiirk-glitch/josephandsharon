@@ -86,7 +86,7 @@
             font-weight: 300;
         }
 
-        /* 2. 본문 섹션 스타일 */
+        /* 본문 섹션 스타일 */
         .section {
             padding: 20px 25px;
             text-align: center;
@@ -140,24 +140,13 @@
             word-break: keep-all;
         }
 
-        /* 대화형 카카오 지도 상자 */
-        .map-container {
-            margin-top: 20px;
-            width: 100%;
-            height: 280px;
-            border: 1px solid #eae6dd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            background-color: #faf9f6;
-        }
-
         /* 내비게이션 버튼 스타일 */
         .main-map-btn {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 14px;
+            margin-top: 24px;
+            margin-bottom: 12px;
             background-color: #fee500;
             color: #191919;
             padding: 14px;
@@ -167,11 +156,23 @@
             font-size: 1.15rem;
             border: 1px solid #eed000;
         }
+        
+        /* 대화형 카카오 지도 상자 */
+        .map-container {
+            width: 100%;
+            height: 280px;
+            border: 1px solid #eae6dd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background-color: #faf9f6;
+        }
+
         .sub-map-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
-            margin-top: 8px;
+            margin-top: 12px;
         }
         .sub-map-btn {
             display: flex;
@@ -367,7 +368,7 @@
 
     <div class="section-divider">❖</div>
 
-    <!-- 3. 일시 및 장소 상세 (움직이는 실시간 카카오 지도 완벽 연동) -->
+    <!-- 3. 일시 및 장소 상세 -->
     <div class="section">
         <h2 class="section-title">일시 및 장소</h2>
         <div class="details-box">
@@ -385,15 +386,15 @@
             </div>
         </div>
 
-        <!-- 마우스/손가락으로 움직이는 카카오 지도 삽입 공간 -->
+        <!-- 카카오맵으로 열기 버튼 (대화형 지도 위로 이동 및 문구 변경 완료) -->
+        <a href="https://map.kakao.com/link/search/서울시 관악구 인헌1길 29" target="_blank" class="main-map-btn">
+            카카오맵으로 열기
+        </a>
+
+        <!-- 마우스/손가락으로 움직이는 카카오 대화형 지도 -->
         <div class="map-container">
             <div id="daum-map-canvas" style="width:100%; height:100%;"></div>
         </div>
-
-        <!-- 메인 카카오맵 버튼 -->
-        <a href="https://map.kakao.com/link/search/서울시 관악구 인헌1길 29" target="_blank" class="main-map-btn">
-            💛 카카오맵으로 길찾기
-        </a>
 
         <!-- 하단 네이버, 티맵, 구글맵 서브 버튼 그리드 -->
         <div class="sub-map-grid">
@@ -426,7 +427,59 @@
 
     <div class="section-divider">❖</div>
 
-    <!-- 5. 연락하기 섹션 -->
+    <!-- 5. 하객 안내 사항 (마음 전하실 곳 항목 삭제 완료) -->
+    <div class="section">
+        <h2 class="section-title">하객 안내 사항</h2>
+        <ul class="guide-list">
+            <li>• <strong>주차 안내:</strong> 교회 내 주차장 이용이 가능하나 정체될 수 있으니 가급적 대중교통 이용을 부탁드립니다.</li>
+            <li>• <strong>피로연 안내:</strong> 예식전 오후 12시와 오후 2시에 교회 내 피로연장에 정성 어린 식사가 준비되어 있습니다.</li>
+        </ul>
+    </div>
+
+    <div class="section-divider">❖</div>
+
+    <!-- 6. 마음 전하실 곳 -->
+    <div class="section">
+        <h2 class="section-title">마음 전하실 곳</h2>
+        
+        <!-- 신랑측 계좌 펼치기 -->
+        <button class="accordion-btn" onclick="toggleAccordion('groom-acc')">신랑측 계좌번호</button>
+        <div id="groom-acc" class="account-content accordion-content">
+            <div class="info-row">
+                <span><strong>김태형</strong><span class="role-tag">신랑</span><span class="acc-text">OO은행 123-456-78901</span></span>
+                <button class="copy-button" onclick="copyText('123-456-78901')">복사</button>
+            </div>
+            <div class="info-row">
+                <span><strong>김진근</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+            </div>
+            <div class="info-row">
+                <span><strong>박정희</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+            </div>
+        </div>
+
+        <!-- 신부측 계좌 펼치기 -->
+        <button class="accordion-btn" onclick="toggleAccordion('bride-acc')">신부측 계좌번호</button>
+        <div id="bride-acc" class="account-content accordion-content">
+            <div class="info-row">
+                <span><strong>조샤론</strong><span class="role-tag">신부</span><span class="acc-text">OO은행 987-654-32109</span></span>
+                <button class="copy-button" onclick="copyText('987-654-32109')">복사</button>
+            </div>
+            <div class="info-row">
+                <span><strong>조계진</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+            </div>
+            <div class="info-row">
+                <span><strong>김성화</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
+                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider">❖</div>
+
+    <!-- 7. 연락하기 섹션 (마음 전하실 곳 밑으로 이동 완료) -->
     <div class="section">
         <h2 class="section-title">연락하기</h2>
         
@@ -477,62 +530,9 @@
         </div>
     </div>
 
-    <div class="section-divider">❖</div>
-
-    <!-- 6. 하객 안내 사항 -->
-    <div class="section">
-        <h2 class="section-title">하객 안내 사항</h2>
-        <ul class="guide-list">
-            <li>• <strong>주차 안내:</strong> 교회 내 주차장 이용이 가능하나 정체될 수 있으니 가급적 대중교통 이용을 부탁드립니다.</li>
-            <li>• <strong>피로연 안내:</strong> 예식전 오후 12시와 오후 2시에 교회 내 피로연장에 정성 어린 식사가 준비되어 있습니다.</li>
-            <li>• <strong>마음 전하실 곳:</strong> 축복해 주시는 따뜻한 마음 감사히 간직하겠습니다.</li>
-        </ul>
-    </div>
-
-    <div class="section-divider">❖</div>
-
-    <!-- 7. 마음 전하실 곳 -->
-    <div class="section">
-        <h2 class="section-title">마음 전하실 곳</h2>
-        
-        <!-- 신랑측 계좌 펼치기 -->
-        <button class="accordion-btn" onclick="toggleAccordion('groom-acc')">신랑측 계좌번호</button>
-        <div id="groom-acc" class="account-content accordion-content">
-            <div class="info-row">
-                <span><strong>김태형</strong><span class="role-tag">신랑</span><span class="acc-text">OO은행 123-456-78901</span></span>
-                <button class="copy-button" onclick="copyText('123-456-78901')">복사</button>
-            </div>
-            <div class="info-row">
-                <span><strong>김진근</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
-                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
-            </div>
-            <div class="info-row">
-                <span><strong>박정희</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
-                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
-            </div>
-        </div>
-
-        <!-- 신부측 계좌 펼치기 -->
-        <button class="accordion-btn" onclick="toggleAccordion('bride-acc')">신부측 계좌번호</button>
-        <div id="bride-acc" class="account-content accordion-content">
-            <div class="info-row">
-                <span><strong>조샤론</strong><span class="role-tag">신부</span><span class="acc-text">OO은행 987-654-32109</span></span>
-                <button class="copy-button" onclick="copyText('987-654-32109')">복사</button>
-            </div>
-            <div class="info-row">
-                <span><strong>조계진</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
-                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
-            </div>
-            <div class="info-row">
-                <span><strong>김성화</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
-                <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
-            </div>
-        </div>
-    </div>
-
 </div>
 
-<!-- ★ 카카오 지도 공식 시스템 연결 (새로운 자바스크립트 앱키 반영 완료) -->
+<!-- 카카오 지도 공식 시스템 연결 -->
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0ea4f9fff2139a0f669333253cecda58&libraries=services"></script>
 <script>
     // 1. 아코디언 및 복사 시스템 코드
@@ -557,25 +557,22 @@
     var mapContainer = document.getElementById('daum-map-canvas');
     var geocoder = new kakao.maps.services.Geocoder();
 
-    // 주소로 검색하여 자동으로 정중앙 마커 생성
     geocoder.addressSearch('서울시 관악구 인헌1길 29', function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
             var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
             
             var mapOption = {
                 center: coords,
-                level: 3 // 지도 확대 단계
+                level: 3
             };
             
             var map = new kakao.maps.Map(mapContainer, mapOption);
             
-            // 지도 위에 핀 꽂기
             var marker = new kakao.maps.Marker({
                 map: map,
                 position: coords
             });
             
-            // 작은 말풍선 이름 띄우기
             var infowindow = new kakao.maps.InfoWindow({
                 content: '<div style="width:150px;text-align:center;padding:6px 0;font-size:0.9rem;font-weight:bold;color:#222;">시냇가푸른교회</div>'
             });
