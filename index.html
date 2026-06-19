@@ -101,15 +101,15 @@
             font-weight: 700;
         }
         
-        /* 연속 드로잉 중첩 하트 & 풍성한 나뭇잎 애니메이션 */
+        /* 🌿 교차 완성형 쌍하트 & 순차 드로잉 애니메이션 설정 */
         .heart-animation-wrap {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .heart-svg {
-            width: 180px;
+            width: 200px;
             height: 100px;
         }
         .heart-branch {
@@ -118,50 +118,55 @@
             fill: none;
             stroke-linecap: round;
             stroke-linejoin: round;
-            stroke-dasharray: 250;
-            stroke-dashoffset: 250;
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
         }
+        /* 왼쪽 하트 선행 드로잉 (전체 6초 중 0~2.4초) */
         .heart-branch.left {
-            animation: drawLeftBranch 6s ease-in-out infinite;
+            animation: drawLeftHeart 6s ease-in-out infinite;
         }
+        /* 오른쪽 하트 후행 드로잉 (전체 6초 중 2.0~4.4초) */
         .heart-branch.right {
-            animation: drawRightBranch 6s ease-in-out infinite;
+            animation: drawRightHeart 6s ease-in-out infinite;
         }
         
+        /* 풍성한 나뭇잎 디자인 및 타이밍 */
         .heart-leaf {
             fill: #8a7355;
             opacity: 0;
             transform-origin: center;
         }
+        /* 왼쪽 하트 가지의 이파리들 */
         .l-lf-1 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 0.5s; }
         .l-lf-2 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 1.0s; }
-        .l-lf-3 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 1.5s; }
-        .l-lf-4 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 2.0s; }
+        .l-lf-3 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 1.6s; }
+        .l-lf-4 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 2.2s; }
         
-        .r-lf-1 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 2.3s; }
-        .r-lf-2 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 2.8s; }
-        .r-lf-3 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 3.3s; }
-        .r-lf-4 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 3.8s; }
+        /* 오른쪽 하트 가지의 이파리들 */
+        .r-lf-1 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 2.5s; }
+        .r-lf-2 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 3.0s; }
+        .r-lf-3 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 3.6s; }
+        .r-lf-4 { animation: fadeInLeaf 6s ease-in-out infinite; animation-delay: 4.2s; }
 
-        @keyframes drawLeftBranch {
-            0% { stroke-dashoffset: 250; }
-            33% { stroke-dashoffset: 0; }
+        @keyframes drawLeftHeart {
+            0% { stroke-dashoffset: 300; }
+            40% { stroke-dashoffset: 0; }
             85% { stroke-dashoffset: 0; opacity: 1; }
-            93% { opacity: 0; stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: 250; opacity: 0; }
+            92% { opacity: 0; stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 300; opacity: 0; }
         }
-        @keyframes drawRightBranch {
-            0%, 28% { stroke-dashoffset: 250; }
-            63% { stroke-dashoffset: 0; }
+        @keyframes drawRightHeart {
+            0%, 33% { stroke-dashoffset: 300; } /* 왼쪽 하트가 반 이상 그려질 때 시작 */
+            73% { stroke-dashoffset: 0; }
             85% { stroke-dashoffset: 0; opacity: 1; }
-            93% { opacity: 0; stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: 250; opacity: 0; }
+            92% { opacity: 0; stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 300; opacity: 0; }
         }
         @keyframes fadeInLeaf {
-            0% { opacity: 0; transform: scale(0.5); }
+            0% { opacity: 0; transform: scale(0.4); }
             15% { opacity: 1; transform: scale(1); }
             85% { opacity: 1; transform: scale(1); }
-            93% { opacity: 0; }
+            92% { opacity: 0; }
             100% { opacity: 0; }
         }
 
@@ -399,23 +404,23 @@
             margin-top: 4px;
         }
         
-        /* 💡 신규 추가: 계좌번호 옆 전화기 이모티콘 버튼 스타일 */
+        /* 🤎 고급 매칭 갈색 테두리 및 원형 전화 통화 링크 박스 생성 */
         .acc-phone-btn {
             text-decoration: none;
-            font-size: 0.9rem;
             background-color: #faf4eb;
             border: 1px solid #e3d7c5;
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: inline-flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
         }
         .acc-phone-btn:hover {
-            background-color: #e3d7c5;
+            background-color: #ebdcb9;
+            transform: scale(1.05);
         }
 
         /* 복사 버튼 디자인 */
@@ -459,19 +464,24 @@
 
     <!-- 2. 모시는 글 -->
     <div class="section">
+        <!-- 🌿 정밀 수정: 한 선이 끝나면 다음 선이 교차 연동되어 피어나는 고밀도 쌍하트 공정 구조 -->
         <div class="heart-animation-wrap">
             <svg class="heart-svg" viewBox="0 0 200 100">
-                <path class="heart-branch left" d="M 92,85 C 50,58 32,25 62,18 C 82,12 95,35 102,46" />
-                <path class="heart-leaf l-lf-1" d="M 45,46 Q 36,44 40,36 Q 49,40 45,46 Z" />
-                <path class="heart-leaf l-lf-2" d="M 50,25 Q 43,18 52,14 Q 57,22 50,25 Z" />
-                <path class="heart-leaf l-lf-3" d="M 74,15 Q 77,6 85,10 Q 81,19 74,15 Z" />
-                <path class="heart-leaf l-lf-4" d="M 93,27 Q 98,18 104,23 Q 98,31 93,27 Z" />
+                <!-- 1단계: 선행 왼쪽 하트 완결선 -->
+                <path class="heart-branch left" d="M 70,78 C 43,57 28,42 28,26 A 15,15 0 0 1 53,15 C 58,15 64,20 70,25 C 76,20 82,15 87,15 A 15,15 0 0 1 112,26 C 112,42 97,57 70,78" />
+                <!-- 왼쪽 가지에 풍성하게 부착된 디자인 잎사귀들 -->
+                <path class="heart-leaf l-lf-1" d="M 42,54 Q 34,51 38,43 Q 47,47 42,54 Z" />
+                <path class="heart-leaf l-lf-2" d="M 30,28 Q 23,20 32,16 Q 37,24 30,28 Z" />
+                <path class="heart-leaf l-lf-3" d="M 58,15 Q 61,6 69,10 Q 65,19 58,15 Z" />
+                <path class="heart-leaf l-lf-4" d="M 94,36 Q 99,27 105,32 Q 99,40 94,36 Z" />
 
-                <path class="heart-branch right" d="M 98,46 C 105,35 118,12 138,18 C 168,25 150,58 108,85" />
-                <path class="heart-leaf r-lf-1" d="M 107,27 Q 102,18 108,23 Q 113,31 107,27 Z" />
-                <path class="heart-leaf r-lf-2" d="M 126,15 Q 123,6 131,10 Q 127,19 126,15 Z" />
-                <path class="heart-leaf r-lf-3" d="M 150,25 Q 157,18 148,14 Q 143,22 150,25 Z" />
-                <path class="heart-leaf r-lf-4" d="M 155,46 Q 164,44 160,36 Q 151,40 155,46 Z" />
+                <!-- 2단계: 유기적으로 겹치며 완결되는 후행 오른쪽 하트 완결선 -->
+                <path class="heart-branch right" d="M 130,78 C 103,57 88,42 88,26 A 15,15 0 0 1 113,15 C 118,15 124,20 130,25 C 136,20 142,15 147,15 A 15,15 0 0 1 172,26 C 172,42 157,57 130,78" />
+                <!-- 오른쪽 가지에 풍성하게 부착된 디자인 잎사귀들 -->
+                <path class="heart-leaf r-lf-1" d="M 104,36 Q 99,27 105,22 Q 110,30 104,36 Z" />
+                <path class="heart-leaf r-lf-2" d="M 142,15 Q 139,6 147,10 Q 143,19 142,15 Z" />
+                <path class="heart-leaf r-lf-3" d="M 170,28 Q 177,20 168,16 Q 163,24 170,28 Z" />
+                <path class="heart-leaf r-lf-4" d="M 158,54 Q 166,51 162,43 Q 153,47 158,54 Z" />
             </svg>
         </div>
 
@@ -604,21 +614,28 @@
             <div class="info-row">
                 <span><strong>김태형</strong><span class="role-tag">신랑</span><span class="acc-text">OO은행 123-456-78901</span></span>
                 <div style="display: flex; align-items: center; gap: 6px;">
-                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <!-- 정밀 연동: 테마 정합 갈색 매칭형 전화 통화 다이얼 박스 -->
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#8a7355" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </a>
                     <button class="copy-button" onclick="copyText('123-456-78901')">복사</button>
                 </div>
             </div>
             <div class="info-row">
                 <span><strong>김진근</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
                 <div style="display: flex; align-items: center; gap: 6px;">
-                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#8a7355" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </a>
                     <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
                 </div>
             </div>
             <div class="info-row">
                 <span><strong>박정희</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
                 <div style="display: flex; align-items: center; gap: 6px;">
-                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#8a7355" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </a>
                     <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
                 </div>
             </div>
@@ -630,21 +647,27 @@
             <div class="info-row">
                 <span><strong>조샤론</strong><span class="role-tag">신부</span><span class="acc-text">OO은행 987-654-32109</span></span>
                 <div style="display: flex; align-items: center; gap: 6px;">
-                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#8a7355" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </a>
                     <button class="copy-button" onclick="copyText('987-654-32109')">복사</button>
                 </div>
             </div>
             <div class="info-row">
                 <span><strong>조계진</strong><span class="role-tag">아버지</span><span class="acc-text">OO은행 000-000-000000</span></span>
                 <div style="display: flex; align-items: center; gap: 6px;">
-                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#8a7355" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </a>
                     <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
                 </div>
             </div>
             <div class="info-row">
                 <span><strong>김성화</strong><span class="role-tag">어머니</span><span class="acc-text">OO은행 000-000-000000</span></span>
                 <div style="display: flex; align-items: center; gap: 6px;">
-                    <a href="tel:010-0000-0000" class="acc-phone-btn">📞</a>
+                    <a href="tel:010-0000-0000" class="acc-phone-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#8a7355" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </a>
                     <button class="copy-button" onclick="copyText('000-000-000000')">복사</button>
                 </div>
             </div>
