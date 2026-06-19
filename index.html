@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>태형 & 샤론's Wedding Invitation</title>
-    <!-- 구글 폰트 추가 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,400;0,600;1,400&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* 기본 스타일 초기화 */
         * {
@@ -114,7 +113,7 @@
             overflow: visible;
         }
         
-        /* 메인 하트 선 (정밀 타임 테이블 적용으로 완전히 투명화 후 초기화) */
+        /* 메인 하트 선 */
         .continuous-heart {
             fill: none;
             stroke: #b09b80;
@@ -126,7 +125,7 @@
             animation: drawContinuous 6s linear infinite;
         }
 
-        /* 잎사귀 장식 (다음 애니메이션 작동 전 잔상을 완벽히 지우도록 수정) */
+        /* 잎사귀 장식 */
         .leaf {
             fill: #b09b80;
             opacity: 0;
@@ -134,15 +133,16 @@
             transform-origin: center;
             animation: fadeLeaf 6s linear infinite;
         }
-        .lf-left { animation-delay: 0.3s; }
-        .lf-right { animation-delay: 2.8s; }
+        
+        /* 💡 수정된 부분: 왼쪽과 오른쪽 잎사귀가 완전히 동시에 나타나도록 딜레이 통일 */
+        .lf-left, .lf-right { animation-delay: 0.3s; }
 
         @keyframes drawContinuous {
             0% { stroke-dashoffset: 450; opacity: 0; }
             2% { opacity: 1; }
             45% { stroke-dashoffset: 0; opacity: 1; }
             70% { stroke-dashoffset: 0; opacity: 1; }
-            78% { stroke-dashoffset: 0; opacity: 0; } /* 다음 사이클 전 완벽 제거 */
+            78% { stroke-dashoffset: 0; opacity: 0; }
             100% { stroke-dashoffset: 450; opacity: 0; }
         }
 
@@ -150,7 +150,7 @@
             0%, 45% { opacity: 0; transform: scale(0.5); }
             55% { opacity: 1; transform: scale(1); }
             70% { opacity: 1; transform: scale(1); }
-            78% { opacity: 0; transform: scale(0.7); } /* 다음 사이클 전 완벽 제거 */
+            78% { opacity: 0; transform: scale(0.7); }
             100% { opacity: 0; }
         }
 
@@ -430,7 +430,6 @@
 
 <div class="wrapper">
     
-    <!-- 1. 메인 섹션 -->
     <div class="hero">
         <div class="main-title">
             2026.08.08 오후 1시<br>
@@ -447,13 +446,10 @@
 
     <div class="section-divider">❖</div>
 
-    <!-- 2. 모시는 글 -->
     <div class="section">
-        <!-- 🌿 끊어지지 않는 '한 붓 그리기' 연속 더블 하트 + 양쪽 넝쿨 잎사귀 -->
         <div class="heart-animation-wrap">
             <svg class="heart-svg" viewBox="0 0 100 60">
                 
-                <!-- 끊어짐 없이 단 하나의 <path> 로 이어지는 완벽한 2개의 하트 라인 -->
                 <path class="continuous-heart" 
                       d="M 10 35 
                          Q 20 35 35 45 
@@ -464,12 +460,10 @@
                          C 70 10 75 35 55 45 
                          Q 70 35 90 35" />
 
-                <!-- 왼쪽 잎사귀 장식들 -->
                 <path class="leaf lf-left" d="M 20 38 Q 16 42 12 40 Q 15 35 20 38 Z" />
                 <path class="leaf lf-left" d="M 26 39 Q 22 45 18 44 Q 22 38 26 39 Z" />
                 <path class="leaf lf-left" d="M 16 35 Q 12 30 16 28 Q 19 32 16 35 Z" />
 
-                <!-- 오른쪽 잎사귀 장식들 -->
                 <path class="leaf lf-right" d="M 80 38 Q 84 42 88 40 Q 85 35 80 38 Z" />
                 <path class="leaf lf-right" d="M 74 39 Q 78 45 82 44 Q 78 38 74 39 Z" />
                 <path class="leaf lf-right" d="M 84 35 Q 88 30 84 28 Q 81 32 84 35 Z" />
@@ -488,7 +482,6 @@
             더없는 기쁨으로 간직하겠습니다.
         </p>
 
-        <!-- 혼주 관계 및 신랑신부 (장남/장녀 반영, '의' 삭제) -->
         <div class="wedding-relations">
             <div class="relation-row">
                 <span>김진근</span> · <span>박정희</span> <span class="relation-small">장남</span> <span class="relation-name-main">김태형</span>
@@ -501,7 +494,6 @@
 
     <div class="section-divider">❖</div>
 
-    <!-- 3. 일시 및 장소 상세 -->
     <div class="section">
         <h2 class="section-title">일시 및 장소</h2>
         <div class="details-box">
@@ -519,7 +511,6 @@
             </div>
         </div>
 
-        <!-- 마우스/손가락으로 움직이는 카카오 대화형 지도 박스 -->
         <div class="map-container">
             <a href="https://map.kakao.com/link/search/서울시 관악구 인헌1길 29" target="_blank" class="map-overlay-btn">
                 카카오맵으로 열기
@@ -527,16 +518,13 @@
             <div id="daum-map-canvas" style="width:100%; height:100%;"></div>
         </div>
 
-        <!-- 하단 네이버, 티맵, 구글맵 서브 버튼 그리드 -->
         <div class="sub-map-grid">
             <a href="https://map.naver.com/v5/search/서울시 관악구 인헌1길 29" target="_blank" class="sub-map-btn naver">네이버 지도</a>
             <a href="tmap://search?name=서울시 관악구 인헌1길 29" class="sub-map-btn tmap">티맵(TMAP)</a>
             <a href="https://www.google.com/maps/search/?api=1&query=서울시 관악구 인헌1길 29" target="_blank" class="sub-map-btn google">구글맵</a>
         </div>
 
-        <!-- 오시는 길 교통 정보 안내 사항 -->
         <div class="transport-box">
-            <!-- 자차 안내 -->
             <div class="transport-item">
                 <div class="transport-title">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
@@ -547,7 +535,6 @@
                 </div>
             </div>
 
-            <!-- 지하철 안내 -->
             <div class="transport-item">
                 <div class="transport-title">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="M8 14h8"/><path d="M6 17l-2 3"/><path d="M18 17l2 3"/></svg>
@@ -559,7 +546,6 @@
                 </div>
             </div>
 
-            <!-- 주차 안내 -->
             <div class="transport-item">
                 <div class="transport-title" style="color: #d9534f;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #d9534f;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
@@ -570,7 +556,6 @@
                 </div>
             </div>
 
-            <!-- 식사 안내 Dining -->
             <div class="transport-item">
                 <div class="transport-title">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v8c0 1.1.9 2 2 2h3c0-1.1-.9-2-2-2z"/><path d="M18 17v5"/></svg>
@@ -585,7 +570,6 @@
 
     <div class="section-divider">❖</div>
 
-    <!-- 4. 갤러리 섹션 -->
     <div class="section">
         <h2 class="section-title">우리의 아름다운 순간</h2>
         <div class="gallery-grid">
@@ -606,14 +590,11 @@
 
     <div class="section-divider">❖</div>
 
-    <!-- 5. 마음 전하실 곳 -->
     <div class="section">
         <h2 class="section-title">마음 전하실 곳</h2>
         
-        <!-- 신랑측 계좌 펼치기 -->
         <button class="accordion-btn" onclick="toggleAccordion('groom-acc')">신랑측 계좌번호</button>
         <div id="groom-acc" class="account-content accordion-content">
-            <!-- 신랑 본인 -->
             <div class="info-row">
                 <span><strong>김태형</strong><span class="role-tag">신랑</span><span class="acc-text">국민은행 652702-04-348581</span></span>
                 <div class="btn-action-group">
@@ -626,7 +607,6 @@
                     <button class="copy-button" onclick="copyText('652702-04-348581')">복사</button>
                 </div>
             </div>
-            <!-- 신랑 아버지 -->
             <div class="info-row">
                 <span><strong>김진근</strong><span class="role-tag">아버지</span><span class="acc-text">농협은행 185-12-027972</span></span>
                 <div class="btn-action-group">
@@ -639,7 +619,6 @@
                     <button class="copy-button" onclick="copyText('185-12-027972')">복사</button>
                 </div>
             </div>
-            <!-- 신랑 어머니 -->
             <div class="info-row">
                 <span><strong>박정희</strong><span class="role-tag">어머니</span><span class="acc-text">국민은행 954201-00-047392</span></span>
                 <div class="btn-action-group">
@@ -654,10 +633,8 @@
             </div>
         </div>
 
-        <!-- 신부측 계좌 펼치기 -->
         <button class="accordion-btn" onclick="toggleAccordion('bride-acc')">신부측 계좌번호</button>
         <div id="bride-acc" class="account-content accordion-content">
-            <!-- 신부 본인 -->
             <div class="info-row">
                 <span><strong>조샤론</strong><span class="role-tag">신부</span><span class="acc-text">하나은행 52391010024307</span></span>
                 <div class="btn-action-group">
@@ -670,7 +647,6 @@
                     <button class="copy-button" onclick="copyText('52391010024307')">복사</button>
                 </div>
             </div>
-            <!-- 신부 아버지 -->
             <div class="info-row">
                 <span><strong>조계진</strong><span class="role-tag">아버지</span><span class="acc-text">시티은행 4031402226501</span></span>
                 <div class="btn-action-group">
@@ -683,7 +659,6 @@
                     <button class="copy-button" onclick="copyText('4031402226501')">복사</button>
                 </div>
             </div>
-            <!-- 신부 어머니 -->
             <div class="info-row">
                 <span><strong>김성화</strong><span class="role-tag">어머니</span><span class="acc-text">새마을금고 9004003190786</span></span>
                 <div class="btn-action-group">
@@ -701,7 +676,6 @@
 
 </div>
 
-<!-- 카카오 지도 공식 시스템 연결 -->
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0ea4f9fff2139a0f669333253cecda58&libraries=services"></script>
 <script>
     // 1. 아코디언 및 복사 시스템 코드
