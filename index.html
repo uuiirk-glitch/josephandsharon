@@ -1,12 +1,88 @@
-<!-- 🌿 수정된 3봉우리 연속 드로잉 하트 그래픽 -->
-        <div class="heart-animation-wrap">
-            <svg class="heart-svg" viewBox="0 0 240 120">
-                <!-- 3개의 봉우리가 연속으로 그려지는 고품격 경로 -->
-                <path class="heart-trail" d="M 60,40 C 40,10 0,20 0,50 C 0,85 60,110 60,110 C 60,110 120,85 120,50 C 120,20 80,10 60,40 C 60,40 100,10 140,40 C 170,70 120,100 120,100" />
-                
-                <!-- 하트 포인트에 맞춰 배치된 나뭇잎 조형 요소 -->
-                <path class="heart-leaf lf-1" d="M 20,30 Q 15,25 22,22 Q 25,28 20,30 Z" />
-                <path class="heart-leaf lf-2" d="M 60,105 Q 55,112 65,112 Q 62,105 60,105 Z" />
-                <path class="heart-leaf lf-3" d="M 135,35 Q 142,30 145,38 Q 138,40 135,35 Z" />
-            </svg>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태형 & 샤론's Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #f6f5f0; font-family: 'Noto Sans KR', sans-serif; color: #333333; display: flex; justify-content: center; min-height: 100vh; line-height: 1.6; }
+        .wrapper { width: 100%; max-width: 450px; background-color: #ffffff; min-height: 100vh; padding-bottom: 60px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.05); }
+        .hero { text-align: center; padding: 80px 20px 60px 20px; background: linear-gradient(to bottom, #faf9f5 0%, #ffffff 100%); }
+        .names { font-family: 'Noto Serif KR', serif; font-size: 2.4rem; margin-bottom: 15px; }
+        .section { padding: 40px 25px; text-align: center; }
+        .section-title { font-family: 'Noto Serif KR', serif; font-size: 1.3rem; color: #8a7355; margin-bottom: 25px; }
+        
+        /* 🌿 3봉우리 연속 하트 애니메이션 */
+        .heart-svg { width: 200px; height: 100px; }
+        .heart-trail { stroke: #8a7355; stroke-width: 2; fill: none; stroke-dasharray: 400; stroke-dashoffset: 400; animation: drawHeart 4s linear infinite; }
+        @keyframes drawHeart { to { stroke-dashoffset: 0; } }
+
+        .greeting-p { font-family: 'Noto Serif KR', serif; line-height: 2.2; margin-bottom: 30px; }
+        .wedding-relations { font-family: 'Noto Serif KR', serif; text-align: left; display: inline-block; }
+        .relation-row { margin-bottom: 10px; }
+        .small-txt { font-size: 0.85rem; color: #777; }
+        
+        .info-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px dashed #eae6dd; }
+        .acc-comm-btn { text-decoration: none; padding: 5px; margin-left: 5px; }
+        .copy-button { background: #8a7355; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="hero">
+        <div class="names">태형 & 샤론</div>
+    </div>
+
+    <div class="section">
+        <!-- 3봉우리 하트 -->
+        <svg class="heart-svg" viewBox="0 0 200 100">
+            <path class="heart-trail" d="M 50,30 C 20,0 0,30 20,60 C 20,60 50,90 50,90 C 50,90 80,60 80,30 C 80,0 50,0 50,30 C 50,30 120,0 150,30 C 180,60 150,90 120,90" />
+        </svg>
+
+        <h2 class="section-title">모시는 글</h2>
+        <p class="greeting-p">하나님의 사랑 안에서 만난 두 사람이<br>믿음과 신뢰로 가정을 이루려 합니다.</p>
+        
+        <div class="wedding-relations">
+            <div class="relation-row">김진근·박정희 <span class="small-txt">차남</span> 김태형</div>
+            <div class="relation-row">조계진·김성화 <span class="small-txt">차녀</span> 조샤론</div>
         </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">마음 전하실 곳</h2>
+        <div class="info-row">
+            <span><strong>김진근(신랑부)</strong><br>농협 185-12-027972</span>
+            <div>
+                <a href="tel:010-0000-0000" class="acc-comm-btn">📞</a>
+                <a href="sms:010-0000-0000" class="acc-comm-btn">💬</a>
+                <button class="copy-button" onclick="alert('복사됨')">복사</button>
+            </div>
+        </div>
+        <div class="info-row">
+            <span><strong>박정희(신랑모)</strong><br>국민 954201-00-047392</span>
+            <div><a href="tel:010-0000-0000" class="acc-comm-btn">📞</a><a href="sms:010-0000-0000" class="acc-comm-btn">💬</a><button class="copy-button">복사</button></div>
+        </div>
+        <div class="info-row">
+            <span><strong>김태형(신랑)</strong><br>국민 652702-04-348581</span>
+            <div><a href="tel:010-0000-0000" class="acc-comm-btn">📞</a><a href="sms:010-0000-0000" class="acc-comm-btn">💬</a><button class="copy-button">복사</button></div>
+        </div>
+        <div class="info-row">
+            <span><strong>조샤론(신부)</strong><br>하나 52391010024307</span>
+            <div><a href="tel:010-0000-0000" class="acc-comm-btn">📞</a><a href="sms:010-0000-0000" class="acc-comm-btn">💬</a><button class="copy-button">복사</button></div>
+        </div>
+        <div class="info-row">
+            <span><strong>조계진(신부부)</strong><br>시티 4031402226501</span>
+            <div><a href="tel:010-0000-0000" class="acc-comm-btn">📞</a><a href="sms:010-0000-0000" class="acc-comm-btn">💬</a><button class="copy-button">복사</button></div>
+        </div>
+        <div class="info-row">
+            <span><strong>김성화(신부모)</strong><br>새마을 9004003190786</span>
+            <div><a href="tel:010-0000-0000" class="acc-comm-btn">📞</a><a href="sms:010-0000-0000" class="acc-comm-btn">💬</a><button class="copy-button">복사</button></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
