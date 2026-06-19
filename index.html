@@ -101,7 +101,7 @@
             font-weight: 700;
         }
         
-        /* 🌿 리디자인: 3봉우리 연속 연결선 드로잉 애니메이션 (크기 축소 반영) */
+        /* 🌿 리디자인: 투아워게스트 스타일 3하트 연속 드로잉 (가운데 -> 왼쪽 -> 오른쪽) */
         .heart-animation-wrap {
             display: flex;
             justify-content: center;
@@ -109,47 +109,34 @@
             margin-bottom: 25px;
         }
         .heart-svg {
-            width: 160px; /* 기존 240px에서 작고 앙증맞게 축소 */
-            height: 96px; /* 기존 120px에서 비율에 맞게 축소 */
+            width: 100px;
+            height: 40px;
             overflow: visible;
         }
-        .heart-trail {
-            stroke: #8a7355;
-            stroke-width: 3;
+        .heart-path {
             fill: none;
+            stroke: #b09b80; /* 감성적인 톤다운 색상 */
+            stroke-width: 1.5;
             stroke-linecap: round;
             stroke-linejoin: round;
-            /* 패스 길이에 맞춰 대시 조절 */
-            stroke-dasharray: 400;
-            stroke-dashoffset: 400;
-            animation: drawContinuousHeart 5.5s ease-in-out infinite;
+            stroke-dasharray: 120;
+            stroke-dashoffset: 120;
+            animation: drawHeartSeq 4.5s ease-in-out infinite;
         }
-        .heart-leaf {
-            fill: #8a7355;
-            opacity: 0;
-            transform-origin: center;
-            animation: fadeInLeaf 5.5s ease-in-out infinite;
-        }
-        /* 라인 진행 상황에 맞춰 이파리 순차 등장하도록 딜레이 정밀 세팅 */
-        .lf-1 { animation-delay: 0.4s; }
-        .lf-2 { animation-delay: 1.2s; }
-        .lf-3 { animation-delay: 1.8s; }
-        .lf-4 { animation-delay: 2.4s; }
-        .lf-5 { animation-delay: 3.0s; }
+        
+        /* 그리는 순서 세팅 (가운데 -> 왼쪽 -> 오른쪽) */
+        .center-heart { animation-delay: 0s; stroke-width: 1.8; }
+        .left-heart   { animation-delay: 0.8s; }
+        .right-heart  { animation-delay: 1.6s; }
 
-        @keyframes drawContinuousHeart {
-            0% { stroke-dashoffset: 400; }
-            55% { stroke-dashoffset: 0; }
-            85% { stroke-dashoffset: 0; opacity: 1; }
-            92% { opacity: 0; stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: 400; opacity: 0; }
-        }
-        @keyframes fadeInLeaf {
-            0% { opacity: 0; transform: scale(0.4); }
-            15% { opacity: 1; transform: scale(1); }
-            85% { opacity: 1; transform: scale(1); }
-            92% { opacity: 0; }
-            100% { opacity: 0; }
+        @keyframes drawHeartSeq {
+            0%   { stroke-dashoffset: 120; fill: transparent; opacity: 0; }
+            5%   { opacity: 1; }
+            25%  { stroke-dashoffset: 0; fill: transparent; }
+            35%  { fill: rgba(176, 155, 128, 0.15); stroke-dashoffset: 0; opacity: 1; }
+            80%  { fill: rgba(176, 155, 128, 0.15); stroke-dashoffset: 0; opacity: 1; }
+            90%  { opacity: 0; fill: transparent; }
+            100% { stroke-dashoffset: 120; fill: transparent; opacity: 0; }
         }
 
         /* 모시는 글 */
@@ -178,9 +165,9 @@
             margin-bottom: 0;
         }
         .relation-small {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #888888;
-            margin: 0 10px;
+            margin: 0 12px;
         }
         .relation-name-main {
             font-weight: 600;
@@ -479,18 +466,15 @@
 
     <!-- 2. 모시는 글 -->
     <div class="section">
-        <!-- 🌿 완벽한 균형감의 3봉우리 연속 드로잉 하트 그래픽 (크기 축소 반영) -->
+        <!-- 🌿 감성적인 3하트 드로잉 애니메이션 (가운데 -> 왼쪽 -> 오른쪽) -->
         <div class="heart-animation-wrap">
-            <svg class="heart-svg" viewBox="0 0 200 120">
-                <!-- 3봉우리가 하나로 이어지는 대칭형 우아한 메인 패스 -->
-                <path class="heart-trail" d="M 100,110 C 40,70 30,20 65,45 C 85,15 115,15 135,45 C 170,20 160,70 100,110" />
-                
-                <!-- 패스 굴곡에 맞춰 알맞게 배치된 5개의 나뭇잎 장식 -->
-                <path class="heart-leaf lf-1" d="M 45,75 Q 35,75 35,65 Q 45,60 45,75 Z" />
-                <path class="heart-leaf lf-2" d="M 70,45 Q 60,40 65,30 Q 75,35 70,45 Z" />
-                <path class="heart-leaf lf-3" d="M 100,20 Q 90,15 95,5 Q 105,10 100,20 Z" />
-                <path class="heart-leaf lf-4" d="M 130,45 Q 125,35 135,30 Q 140,40 130,45 Z" />
-                <path class="heart-leaf lf-5" d="M 155,75 Q 155,60 165,65 Q 165,75 155,75 Z" />
+            <svg class="heart-svg" viewBox="0 0 100 40">
+                <!-- 가운데 중심 하트 (가장 먼저 그려짐) -->
+                <path class="heart-path center-heart" d="M 50,34 C 50,34 36,20 36,12 C 36,4 48,2 50,10 C 52,2 64,4 64,12 C 64,20 50,34 50,34 Z" />
+                <!-- 왼쪽 하트 (두 번째로 그려짐) -->
+                <path class="heart-path left-heart" d="M 22,26 C 22,26 12,16 12,10 C 12,4 20,3 22,8 C 24,3 32,4 32,10 C 32,16 22,26 22,26 Z" />
+                <!-- 오른쪽 하트 (세 번째로 그려짐) -->
+                <path class="heart-path right-heart" d="M 78,26 C 78,26 68,16 68,10 C 68,4 76,3 78,8 C 80,3 88,4 88,10 C 88,16 78,26 78,26 Z" />
             </svg>
         </div>
 
@@ -505,13 +489,13 @@
             더없는 기쁨으로 간직하겠습니다.
         </p>
 
-        <!-- 혼주 관계 조직화 테이블 가이드 구현 -->
+        <!-- 혼주 관계 및 신랑신부 (의 삭제, 장남/장녀로 수정) -->
         <div class="wedding-relations">
             <div class="relation-row">
-                <span>김진근</span> · <span>박정희</span> <span class="relation-small">의 차남</span> <span class="relation-name-main">김태형</span>
+                <span>김진근</span> · <span>박정희</span> <span class="relation-small">장남</span> <span class="relation-name-main">김태형</span>
             </div>
             <div class="relation-row">
-                <span>조계진</span> · <span>김성화</span> <span class="relation-small">의 차녀</span> <span class="relation-name-main">조샤론</span>
+                <span>조계진</span> · <span>김성화</span> <span class="relation-small">장녀</span> <span class="relation-name-main">조샤론</span>
             </div>
         </div>
     </div>
@@ -739,7 +723,7 @@
         });
     }
 
-    // 2. 실 바카카오 지도 자동 탐색 및 생성 코드
+    // 2. 실시간 카카오 지도 자동 탐색 및 생성 코드
     var mapContainer = document.getElementById('daum-map-canvas');
     var geocoder = new kakao.maps.services.Geocoder();
 
