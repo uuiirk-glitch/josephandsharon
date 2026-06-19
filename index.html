@@ -117,6 +117,7 @@
             padding: 25px 20px;
             text-align: left;
             margin-top: 10px;
+            margin-bottom: 24px;
         }
         .details-item {
             margin-bottom: 20px;
@@ -139,26 +140,10 @@
             line-height: 1.6;
             word-break: keep-all;
         }
-
-        /* 내비게이션 버튼 스타일 */
-        .main-map-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 24px;
-            margin-bottom: 12px;
-            background-color: #fee500;
-            color: #191919;
-            padding: 14px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.15rem;
-            border: 1px solid #eed000;
-        }
         
         /* 대화형 카카오 지도 상자 */
         .map-container {
+            position: relative; /* 버튼을 지도 안에 띄우기 위한 필수 설정 */
             width: 100%;
             height: 280px;
             border: 1px solid #eae6dd;
@@ -166,6 +151,25 @@
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             background-color: #faf9f6;
+        }
+
+        /* 지도 안쪽 상단 카카오맵 오버레이 버튼 */
+        .map-overlay-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 10; /* 지도 타일보다 항상 위에 보이도록 설정 */
+            background-color: #fee500;
+            color: #191919;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid #eed000;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            display: inline-flex;
+            align-items: center;
         }
 
         .sub-map-grid {
@@ -382,17 +386,16 @@
             </div>
             <div class="details-item">
                 <span class="label">주소</span>
-                <span class="val">서울시 관악구 인헌1길-29</span>
+                <span class="val">서울시 관악구 인헌1길 29</span>
             </div>
         </div>
 
-        <!-- 카카오맵으로 열기 버튼 (대화형 지도 위로 이동 및 문구 변경 완료) -->
-        <a href="https://map.kakao.com/link/search/서울시 관악구 인헌1길 29" target="_blank" class="main-map-btn">
-            카카오맵으로 열기
-        </a>
-
-        <!-- 마우스/손가락으로 움직이는 카카오 대화형 지도 -->
+        <!-- 마우스/손가락으로 움직이는 카카오 대화형 지도 박스 -->
         <div class="map-container">
+            <!-- 지도 안쪽 상단에 얹어지는 카카오맵 이동 버튼 -->
+            <a href="https://map.kakao.com/link/search/서울시 관악구 인헌1길 29" target="_blank" class="map-overlay-btn">
+                카카오맵으로 열기
+            </a>
             <div id="daum-map-canvas" style="width:100%; height:100%;"></div>
         </div>
 
@@ -427,7 +430,7 @@
 
     <div class="section-divider">❖</div>
 
-    <!-- 5. 하객 안내 사항 (마음 전하실 곳 항목 삭제 완료) -->
+    <!-- 5. 하객 안내 사항 -->
     <div class="section">
         <h2 class="section-title">하객 안내 사항</h2>
         <ul class="guide-list">
@@ -479,7 +482,7 @@
 
     <div class="section-divider">❖</div>
 
-    <!-- 7. 연락하기 섹션 (마음 전하실 곳 밑으로 이동 완료) -->
+    <!-- 7. 연락하기 섹션 -->
     <div class="section">
         <h2 class="section-title">연락하기</h2>
         
