@@ -101,7 +101,7 @@
             font-weight: 700;
         }
         
-        /* 🌿 리디자인: 끊어지지 않는 한 붓 그리기 더블 하트 + 넝쿨 */
+        /* 🌿 끊어지지 않는 한 붓 그리기 더블 하트 + 넝쿨 */
         .heart-animation-wrap {
             display: flex;
             justify-content: center;
@@ -114,7 +114,7 @@
             overflow: visible;
         }
         
-        /* 메인 하트 선 (절대 끊어지지 않는 단일 라인) */
+        /* 메인 하트 선 (정밀 타임 테이블 적용으로 완전히 투명화 후 초기화) */
         .continuous-heart {
             fill: none;
             stroke: #b09b80;
@@ -123,33 +123,34 @@
             stroke-linejoin: round;
             stroke-dasharray: 450;
             stroke-dashoffset: 450;
-            animation: drawContinuous 6s ease-in-out infinite;
+            animation: drawContinuous 6s linear infinite;
         }
 
-        /* 잎사귀 장식 (선이 지나간 후 스르륵 나타남) */
+        /* 잎사귀 장식 (다음 애니메이션 작동 전 잔상을 완벽히 지우도록 수정) */
         .leaf {
             fill: #b09b80;
             opacity: 0;
             transform-box: fill-box;
             transform-origin: center;
-            animation: fadeLeaf 6s ease-out infinite;
+            animation: fadeLeaf 6s linear infinite;
         }
         .lf-left { animation-delay: 0.3s; }
         .lf-right { animation-delay: 2.8s; }
 
         @keyframes drawContinuous {
-            0% { stroke-dashoffset: 450; opacity: 1; }
-            45% { stroke-dashoffset: 0; }
-            80% { stroke-dashoffset: 0; opacity: 1; }
-            90% { opacity: 0; stroke-dashoffset: 0; }
+            0% { stroke-dashoffset: 450; opacity: 0; }
+            2% { opacity: 1; }
+            45% { stroke-dashoffset: 0; opacity: 1; }
+            70% { stroke-dashoffset: 0; opacity: 1; }
+            78% { stroke-dashoffset: 0; opacity: 0; } /* 다음 사이클 전 완벽 제거 */
             100% { stroke-dashoffset: 450; opacity: 0; }
         }
 
         @keyframes fadeLeaf {
-            0%, 5% { opacity: 0; transform: scale(0.5); }
-            15% { opacity: 1; transform: scale(1); }
-            80% { opacity: 1; transform: scale(1); }
-            90% { opacity: 0; transform: scale(0.8); }
+            0%, 45% { opacity: 0; transform: scale(0.5); }
+            55% { opacity: 1; transform: scale(1); }
+            70% { opacity: 1; transform: scale(1); }
+            78% { opacity: 0; transform: scale(0.7); } /* 다음 사이클 전 완벽 제거 */
             100% { opacity: 0; }
         }
 
@@ -188,7 +189,6 @@
             color: #222222;
         }
 
-        /* 기타 스타일 생략 (기존과 동일하게 유지) */
         .details-box {
             background-color: #faf9f6;
             border: 1px solid #eae6dd;
