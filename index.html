@@ -47,14 +47,24 @@
             color: #8a7355;
             line-height: 1.8;
             letter-spacing: 1px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
-        .hero .divider-line {
-            width: 40px;
-            height: 1px;
-            background-color: #d1c4b2;
-            margin: 0 auto 40px auto;
+        
+        /* 📷 추가된 메인 사진 스타일 */
+        .hero .hero-img-wrap {
+            margin: 0 auto 35px auto;
+            width: 100%;
+            max-width: 340px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
+        .hero .hero-img-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .hero .names {
             font-family: 'Noto Serif KR', serif;
             font-size: 2.4rem;
@@ -433,10 +443,13 @@
     <div class="hero">
         <div class="main-title">
             2026.08.08 오후 1시<br>
-            시냇가푸른교회 모리아홀 3층
+            시냇가푸른나무교회 모리아홀 3층
         </div>
         
-        <div class="divider-line"></div>
+        <!-- 📷 메인 웨딩 사진이 들어가는 부분 -->
+        <div class="hero-img-wrap">
+            <img src="jpg 1.jpg" alt="태형 & 샤론 웨딩사진">
+        </div>
         
         <div class="names">
             태형 <span>&</span> 샤론
@@ -503,7 +516,7 @@
             </div>
             <div class="details-item">
                 <span class="label">장소</span>
-                <span class="val">시냇가푸른교회 모리아홀 3층</span>
+                <span class="val">시냇가푸른나무교회 모리아홀 3층</span>
             </div>
             <div class="details-item">
                 <span class="label">주소</span>
@@ -717,7 +730,7 @@
             });
             
             var infowindow = new kakao.maps.InfoWindow({
-                content: '<div style="width:150px;text-align:center;padding:6px 0;font-size:0.9rem;font-weight:bold;color:#222;">시냇가푸른교회</div>'
+                content: '<div style="width:150px;text-align:center;padding:6px 0;font-size:0.9rem;font-weight:bold;color:#222;">시냇가푸른나무교회</div>'
             });
             infowindow.open(map, marker);
         } else {
